@@ -1,0 +1,32 @@
+{
+    "Help": {
+        "name":"Help",
+        "group":"User",
+        "desc":"Displays a list of commands.",
+        "usage":"help [group OR command"
+    },
+    "Hook": {
+        "name":"Hook",
+        "group":"User",
+        "desc":"Returns a hook in the channel.",
+        "usgae":"hook <title>,<description>,[color],[avatarURL]"
+    },
+    "Weather": {
+        "name":"Weather",
+        "group":"User",
+        "desc":"Returns the weather to the channel.",
+        "usgae":"weather <location>"
+    },
+    "Purge": {
+        "name":"Purge",
+        "group":"Moderator",
+        "desc":"Clears a specific number of messages",
+        "usgae":"purge <messages>"
+    },
+    "Ping": {
+        "name":"Ping",
+        "group":"Admin", 
+        "desc":"Returns a ping in the channel.",
+        "usgae":"ping"
+    }
+}
