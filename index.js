@@ -1,41 +1,39 @@
 // Calling packages
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const weather = require("weather-js"); // Make sure you call the packages you install.
-const fs = require("fs"); // But we also need to require the fs package.
+const weather = require("weather-js"); // `npm i weather-js`
+const fs = require("fs"); 
 
-// We can call the file with all funcrions here
-const func = require("./functions.js"); // If this returns an error for you (or you might be on linux/ubuntu), try '../functions.js'...
-// You can also change the name of func to something else, like tools.
+// Functions
+const func = require("./functions.js"); 
 
-// We can call the JSON file here
+// JSON
 const commands = JSON.parse(fs.readFileSync("Storage/commands.json", "utf8"));
 
 // Global setings 
-const prefix = "~"; // This is the prefix, you can change this to wahetever you want.
+const prefix = "~"; 
 
 // Listener Event: Runs whenever a message is received.
 bot.on("message", message => {
 
-    // Variables - Variables make it easy to call things, since it rquires less typing.
-    let msg = message.content.toUpperCase(); // This variable takes the message and turns it all Uppercase.
-    let sender = message.author; // This variable takes the message, and finds who the author is.
-    let args = message.content.slice(prefix.length).trim().split(" "); // This variable slices off the prefix.
-    let cmd = args.shift().toLowerCase(); // This takes away the first object in the cont array, then puts it in this. 
+    // Variables 
+    let msg = message.content.toUpperCase(); 
+    let sender = message.author; 
+    let args = message.content.slice(prefix.length).trim().split(" "); 
+    let cmd = args.shift().toLowerCase(); 
 
-    // We also need to make sure that it doesnt read messages from the bot.
     if (sender.bot) return;
-    if (!message.content.startsWith(prefix)) return; // We also want to make it so that if the message does not start with the prefix, return,
+    if (!message.content.startsWith(prefix)) return; 
 
-    // Command Handler - .trim() removes the blank spaces on both sides of the string
+    // Command Handler 
     try {
-        let commandFile = require(`./commands/${cmd}.js`); // This will assign that filename to commandFile.
-        commandFile.run(bot, message, args, func); // This will try to run that file.
-    } catch(e) { // If an error occurs, this will run.
+        let commandFile = require(`./commands/${cmd}.js`);
+        commandFile.run(bot, message, args, func); 
+    } catch(e) { 
 
-        console.log(e.message); // This logs the error message.
+        console.log(e.message); 
 
-    } finally { // This will run after the first two clear up.
+    } finally { 
 
         console.log(`${message.author.username} ran the command: ${cmd}`); 
 
@@ -43,13 +41,9 @@ bot.on("message", message => {
 
 });
 
-// Listener Event: Runs whenever the bot sends a ready event (when it first starts for example)
+// Listener Event: Runs whenever the bot sends a ready event 
 bot.on("ready", () => {
-    // We can post into console that the bot launched.
     console.log("Bot started.")
 });
 
-// Ignore this, it only hides my login token. Example: bot.login("<token>");
-//#region 
-    bot.login("NTM1ODA2MDYwMTQ1OTM0MzU4.DyNgFQ.VKxJaRoy0FXHhQCLiDVeVINFiBM");
-    //#endregion 
+    bot.login("TOKEN");
