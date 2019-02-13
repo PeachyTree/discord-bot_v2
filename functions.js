@@ -1,33 +1,30 @@
 module.exports = { // This basically works like every normal package you use.
 
-    ping: function(channel) { // "ping" is the name of the function, then function() is where you can pass arguments.
+    ping: function(channel) { 
         channel.send("Pong!");
     },
-    hook: function(channel, title, message, color, avatar) { // This function uses quite a few options. The last 2 are optional.
+    hook: function(channel, title, message, color, avatar) {
 
-    // Reassign default parameters - If any are blank.
+    // Reassign default parameters 
     if (!channel) return console.log("Channel not specified.");
     if (!title) return console.log("Title not specified");
     if (!message) return console.log("Message not specified");
-    if (!color) color = "d9a744"; // This is an optional variable. Therefore the default HEX color will be whatever you post there.
-    if (!avatar) avatar = "https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png" // This is also an optional variable. You can also change this to wahetever you want.
+    if (!color) color = "d9a744"; 
+    if (!avatar) avatar = "https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png" 
 
-    // We want to remove spaces from color & url, since they might have it on the sides.
     color = color.replace(/\s/g, ''); 
     avatar = avatar.replace(/\s/g, '');
 
-    // This is the start of creating the webhook
     channel.fetchWebhooks() // This gets the webhooks in the channel
        .then(webhook => {
 
             // Fetches the webhook we will use for each hook
-            let foundHook = webhook.find("name", "Webhook"); // You can rename "Webhook" to the name if your bot, if you want.
-
+            let foundHook = webhook.find("name", "Webhook"); 
+        
             // This runs if the webhook is not found.
             if (!foundHook) {
                 channel.createWebhook("Webhook", "https://cdn4.iconfinder.com/data/icons/technology-devices-1/500/speech-bubble-128.png")
                     .then(webhook => {
-                        // Finally send the webhook
                         webhook.send('', {
                             "username": title,
                             "avatarURL": avatar,
@@ -36,13 +33,13 @@ module.exports = { // This basically works like every normal package you use.
                                 "description":message
                             }]
                         })
-                            .catch(error => { // We also want to make sure if an error is found, to report it to the chat.
+                            .catch(error => { 
                                 console.log(error)
                                 return channel.send("**Something went wrong when sending the webhook. Please check out console.**");
                             })
                     })
-            } else { // That webhook was only for if it couldn't find the original webhook.
-                foundHook.send('', { // This means we can just copy and paste the webhook & catch part.
+            } else { 
+                foundHook.send('', { 
                     "username": title,
                     "avatarURL": avatar,
                     "embeds": [{
@@ -50,7 +47,7 @@ module.exports = { // This basically works like every normal package you use.
                         "description":message
                     }]
                 })
-                    .catch(error => { // We also want to make sure if an error is found, to report it to the chat.
+                    .catch(error => { 
                         console.log(error)
                         return channel.send("**Something went wrong when sending the webhook. Please check out console.**");
                 })
