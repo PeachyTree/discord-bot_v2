@@ -22,11 +22,5 @@
         "group":"Moderator",
         "desc":"Clears a specific number of messages",
         "usgae":"purge <messages>"
-    },
-    "Ping": {
-        "name":"Ping",
-        "group":"Admin", 
-        "desc":"Returns a ping in the channel.",
-        "usgae":"ping"
     }
 }
