@@ -11,7 +11,7 @@ const func = require("./functions.js");
 const commands = JSON.parse(fs.readFileSync("Storage/commands.json", "utf8"));
 
 // Global setings 
-const prefix = "~"; 
+const prefix = process.env.PREFIX; 
 
 // Listener Event: Runs whenever a message is received.
 bot.on("message", message => {
@@ -46,4 +46,4 @@ bot.on("ready", () => {
     console.log("Bot started.")
 });
 
-    bot.login("TOKEN");
+bot.login(process.env.TOKEN);
