@@ -1,5 +1,7 @@
-const weather = require("weather-js"); 
-const Discord = require("discord.js");
+// Copyright (c) 2020 Azura Apple. All rights reserved. MIT license.
+
+const weather = require("weather-js"); // `npm i weather-js`
+const Discord = require("discord.js"); 
 
 exports.run = (bot, message, args, func) => {
 
