@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Azura Apple. All rights reserved. MIT license.
+
 exports.run = (bot, message, args, func) => {
 
      async function purge() { 
