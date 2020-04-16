@@ -1,3 +1,5 @@
+// Copyright (c) 2020 Azura Apple. All rights reserved. MIT license.
+
 module.exports = { // This basically works like every normal package you use.
 
     ping: function(channel) { 
@@ -55,5 +57,5 @@ module.exports = { // This basically works like every normal package you use.
 
             }
        })
-}
+    }
 }
