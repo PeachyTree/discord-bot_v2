@@ -1,8 +1,10 @@
-// Calling packages
-const Discord = require("discord.js");
+// Copyright (c) 2020 Azura Apple. All rights reserved. MIT license.
+
+// Packages:
+const Discord = require("discord.js"); // `npm i discord.js`
 const bot = new Discord.Client();
 const weather = require("weather-js"); // `npm i weather-js`
-const fs = require("fs"); 
+const fs = require("fs"); // No need to install this, it's already included within node.
 
 // Functions
 const func = require("./functions.js"); 
